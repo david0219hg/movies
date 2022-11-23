@@ -2,7 +2,7 @@
   "name": "movies",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "David Hurtado",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -23,10 +23,17 @@
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/mapped-types": "*",
+    "@nestjs/mongoose": "^9.2.1",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.1.3",
+    "dotenv": "^16.0.3",
+    "mongoose": "^6.7.2",
+    "mongose": "^0.0.2-security",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "swagger-ui-express": "^4.6.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
