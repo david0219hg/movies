@@ -1,12 +1,13 @@
-import { Controller, Get, Post, Body, Query, Param} from '@nestjs/common'
+import { Controller, Get, Post, Body, Query, Patch, Param} from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'; ;
-import { MoviesService,  ApiToDBService } from './movies.service';
-import { CreateMovieDto } from './dto/create-movie.dto';
+import { MoviesService,  ApiToDBService, FavoriteMovieService, MovieNoteService } from './movies.service';
+import { CreateFavoriteMovieDto, CreateMovieDto, CreateMovieNoteDto} from './dto/create-movie.dto';
 @Controller('movies')
 @ApiTags('movie') 
 
 export class MoviesController {
-  constructor(private readonly moviesService: MoviesService) {}
+  constructor(private readonly moviesService: MoviesService, private readonly favoriteMovieService: FavoriteMovieService, 
+    private readonly movieNoteService: MovieNoteService) {}
 
   @Post()
   create(@Body() createMovieDto: CreateMovieDto) {
@@ -19,8 +20,33 @@ export class MoviesController {
   }
 
   @Get('/popular')
-  findPopular() {
+  findPopulars() {
     return this.moviesService.findpopular()
+  }
+
+  @Get('/favorite')
+  findFavorites(){
+    return this.favoriteMovieService.findFavorites()
+  }
+
+  @Post('/favorite')
+  createFavorite(@Body() CreateFavoriteMovieDto: CreateFavoriteMovieDto){
+    return this.favoriteMovieService.createFavorite(CreateFavoriteMovieDto)
+  }
+
+  @Post('/note')
+  createNote(@Body() CreateMovieNoteDto: CreateMovieNoteDto){
+    return this.movieNoteService.createNote(CreateMovieNoteDto)
+  }
+
+  @Get('/note')
+  findNotes(){
+    return this.movieNoteService.findNotes()
+  }
+
+  @Patch('/note/:id')
+  update(@Param('id') id: string, @Body() body: Object) {
+    return this.movieNoteService.updateTitle(id, body['noteTitle']); 
   }
 
 }

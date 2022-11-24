@@ -1,15 +1,17 @@
 import { Module } from '@nestjs/common';
-import { ApiToDBService, MoviesService } from './movies.service';
+import { ApiToDBService, MoviesService, FavoriteMovieService, MovieNoteService } from './movies.service';
 import { ApiToDBController, MoviesController } from './movies.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Movie, MovieSchema } from './schemas/movie.schema';
+import { FavoriteMovie, FavoriteMovieSchema, Movie, MovieNote, MovieNoteSchema, MovieSchema } from './schemas/movie.schema';
 
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Movie.name, schema: MovieSchema }]), 
+    MongooseModule.forFeature([{ name: Movie.name, schema: MovieSchema }, 
+      {name: FavoriteMovie.name, schema: FavoriteMovieSchema}, 
+      {name: MovieNote.name, schema: MovieNoteSchema}]), 
   ],
   controllers: [MoviesController, ApiToDBController],
-  providers: [MoviesService, ApiToDBService]
+  providers: [MoviesService, ApiToDBService, FavoriteMovieService, MovieNoteService]
 })
 export class MoviesModule {}

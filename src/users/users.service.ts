@@ -15,8 +15,8 @@ export class UsersService {
     return this.UserModel.create(createUserDto);
   }
 
-  findAll() {
-    return this.UserModel.find().exec();
+  findOne(query: { name: string }): Promise<User> {
+    return this.UserModel.findOne({ name: query.name }).exec();
   }
 
 }

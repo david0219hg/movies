@@ -42,7 +42,61 @@ Endpoint:
 ## create your user
 
 Endpoint:
--> http://localhost:3000/movies?title=example HTTP verb: GET
+-> http://localhost:3000/users HTTP verb: POST
+Body:
+{
+  "name": "your_name"
+}
+
+## add movie to your favorite list
+
+For adding movies to your favorite list
+
+run the endpoint -> http://localhost:3000/movies?title=example HTTP verb: GET  and save the _id value
+
+run the endpoint -> http://localhost:3000/users?name=example HTTP verb: GET  and save the _id value
+
+now the endpoint for saving to your favorite list is: 
+-> http://localhost:3000/movies/favorite HTTP verb: POST
+
+Body:
+{
+  MovieId: "movie_id",
+  userId: "user_id",
+  createdAt: "date_and_time_of_this_moment"
+}
+
+## list your favorite movies
+Endpoint:
+-> http://localhost:3000/movies/favorite HTTP verb: GET
+
+## Create your Notes about a movie
+
+follow the steps shown before for getting the movie_id and the user_id, after that the 
+Endpoint:
+-> http://localhost:3000/movies/note HTTP verb: POST
+
+Body:
+{
+  MovieId: "movie_id",
+  userId: "user_id",
+  createdAt: "date_and_time_of_this_moment",
+  noteTitle: "title",
+  description: "description",
+  urlImage: "www.image.com"
+}
+
+## Edit your Note title
+
+look for the _id of your note with the help of the 
+Endpoint:
+
+-> http://localhost:3000/movies/note HTTP verb: GET
+
+after that use the 
+Endpoint:
+-> http://localhost:3000/movies/note/id HTTP verb: PATCH
+Body: {noteTitle: "new_title"}
 
 ## API documentation with swagger
  -> http://localhost:3000/docs

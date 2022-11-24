@@ -53,3 +53,50 @@ export class CreateMovieDto {
       })
     voteCount: number;
 }
+export class CreateFavoriteMovieDto {
+  @ApiProperty({ 
+    example: 'xdxdxd',
+  })
+  movieId: string;
+
+  @ApiProperty({ 
+      example: 'xdfts',
+  })
+  userId: string;
+  
+  @ApiProperty({ 
+      example: '2022-10-03',
+  }) 
+  createdAt: string
+}
+
+export class CreateMovieNoteDto {
+  @ApiProperty({ 
+    example: 'xdxdxd',
+  })
+  movieId: string;
+
+  @ApiProperty({ 
+      example: 'xdfts',
+  })
+  userId: string;
+  @ApiProperty({ 
+    example: 'I love this movie',
+  }) 
+  noteTitle: string
+
+  @ApiProperty({ 
+    example: 'I love this movie',
+  }) 
+  description: string
+  
+  @ApiProperty({ 
+      example: '2022-10-03',
+  }) 
+  createdAt: string
+  @ApiProperty({
+    example: 'www.image.com'
+  })
+  urlImage: string | null
+}
+
