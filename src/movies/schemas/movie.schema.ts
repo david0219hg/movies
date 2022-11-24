@@ -6,13 +6,13 @@ export type MovieDocument = Movie & Document;
 @Schema()
 export class Movie {
     @Prop()
-    movieAplid: string
+    movieAplid: string | null
     @Prop()
     MovieIDMBid: string | null
     @Prop()
-    languages: string
+    languages: string | null
     @Prop()
-    genres: string
+    genres: number[]
     @Prop()
     OriginalLanguage: string
     @Prop()

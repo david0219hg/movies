@@ -13,9 +13,9 @@ export class CreateMovieDto {
       })
     languages: string;
     @ApiProperty({ 
-        example: 'Male',
+        example: [1,2],
       })
-    genres: string;
+    genres: number[];
     @ApiProperty({ 
         example: 'Spanish',
       })

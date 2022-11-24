@@ -14,30 +14,35 @@ and then run docker-compose up
 
 then you have the server running in http://localhost:3000/
 
-
 ## most popular movies in developers.themoviedb.org
----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 for acessing most popular movies in https://developers.themoviedb.org/ 
--> the endpoint is https://api.themoviedb.org/3/movie/popular?api_key=13d5efcce523f6a6a9295002a762efa2&language=en-US&page=1
+-> the endpoint is https://api.themoviedb.org/3/movie/popular?api_key=13d5efcce523f6a6a9295002a762efa2&language=en-US&page=1 with HTTP verb GET
 in case that it fails change the api_key for one that you have. In this case it is my own api_key.
-----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 
 # Project
-# Important that everything is run in order !!!
 
-## creating user 
-  -
+## filling the DB with movies
+I take the information from this endpoint -> https://api.themoviedb.org/3/movie/popular?api_key=13d5efcce523f6a6a9295002a762efa2&language=en-US&page=1 
+transform it and  save it in the document movies
 
+the endpoint for this process is:
+-> http://localhost:3000/api-to-DB    HTTP verb: GET
 
+## getting most popular movies in order by popularity
 
-# Getting movies in local DB
+Endpoint :
+-> http://localhost:3000/movies/popular  HTTP verb: GET
 
-- Get movies:
--> http://localhost:3000/movies
-- Get an specific movie by title 
--> http://localhost:3000/movies?title=example
+## search movies by title
+Endpoint:
+-> http://localhost:3000/movies?title=example HTTP verb: GET
 
+## create your user
+
+Endpoint:
+-> http://localhost:3000/movies?title=example HTTP verb: GET
 
 ## API documentation with swagger
-
  -> http://localhost:3000/docs
